@@ -20,7 +20,7 @@ def make_file_gen(passes):
         tmp = f.read()
     with open ('makefile_tmp_two.txt', 'rb') as f:
         tmp_two = f.read()
-    opt = 'opt:\n$(opt) $(irfile) -debug-pass=Structure -o $(irfile)'
+    opt = 'opt:\n\t$(opt) $(irfile) -debug-pass=Structure -o $(irfile)'
     for item in passes:
         opt = opt + ' '+item
     with open('Makefile', 'wb') as f:
@@ -30,7 +30,9 @@ def main():
     pass_list = load_from_txt()
     random_list_index = random_gen(pass_list)
     random_list = [pass_list[k] for k in random_list_index]
-    print(random_list)
+    all_list = [pass_list[k] for k in pass_list]
+    print(all_list)
+    print(len(all_list))
     make_file_gen(random_list)
 
 

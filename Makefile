@@ -12,7 +12,7 @@ irfile=2mm.ll
 all:
 	$(cc)  $(ccflags) $(inc) $(file) -O3
 opt:
-$(opt) $(irfile) -debug-pass=Structure -o $(irfile) -dse -gvn -sink -instcombine -constprop -die -mergefunc -mergefunc -lowerswitch
+	$(opt) $(irfile) -debug-pass=Structure -o $(irfile) -globalopt -loop-extract-single -simplifycfg -constprop -codegenprepare -loop-unroll -deadargelim -constprop -deadargelim -argpromotion -lcssa -constmerge -lcssa -ipconstprop -loop-unroll -partial-inliner -ipsccp -indvars -loop-unroll -adce -bb-vectorize -reassociate -bb-vectorize -mergereturn -sroa -always-inline -sink -sccp -loop-reduce -lowerinvoke -sccp -break-crit-edges
 
 ir:
 	$(cc) -S -emit-llvm $(inc) $(file) -O0

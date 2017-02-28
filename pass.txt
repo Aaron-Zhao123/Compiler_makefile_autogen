@@ -9,7 +9,6 @@
 -constprop
 -dce
 -deadargelim
--deadtypeelim
 -die
 -dse
 -functionattrs
