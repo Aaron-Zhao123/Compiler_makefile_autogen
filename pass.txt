@@ -2,7 +2,6 @@
 -always-inline
 -argpromotion
 -bb-vectorize
--block-placement
 -break-crit-edges
 -codegenprepare
 -constmerge
